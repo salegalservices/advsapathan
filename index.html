@@ -132,7 +132,9 @@
        
         /* Hero Section */
         .hero {
-            background-color: black;
+            background: linear-gradient(rgba(2, 4, 7, 0.2), rgba(8, 19, 35, 0.5)), url('img5.jpg') no-repeat center/cover; 
+            /* background: rgba(26, 58, 108, 0.9), url('img4.jpg') no-repeat center/cover; */
+            /* background-color: black; */
             height: 100vh;
             display: flex;
             align-items: center;
@@ -693,9 +695,88 @@
                 margin: 0 auto;
             }
         }
+
+        /* Disclaimer Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 30px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 1200px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .modal-content .logo {
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .modal-content h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .modal-content p {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .modal-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .btn-decline {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .btn-decline:hover {
+            background: transparent;
+            color: var(--accent);
+        }
     </style>
 </head>
 <body>
+    <!-- Disclaimer Modal -->
+    <div id="disclaimerModal" class="modal">
+        <div class="modal-content">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-balance-scale"></i>
+                </div>
+                <div class="logo-text">S.A.<span>Legal Services</span></div>
+            </div>
+            <h2>DISCLAIMER</h2>
+            <p>The Bar Council of India does not permit advertisement or solicitation of work/clients by Advocates. This website is not intended for advertising or soliciting. By clicking on the “I agree” below, the viewer/user acknowledges that there has been no solicitation or advertisement or invitation or enticement or communication of whatsoever nature for any sort of legal or para legal work or services from us or any of our advocates.</p>
+            <p>The viewer/user voluntarily wishes to have access to the information contained in the website. The information provided under this website is solely available at your request for informational purposes only. In cases where the user has any legal issues, the user/viewer must seek independent legal advice from the Advocate of his/her/its own select. No information provided herein shall be construed to be a legal advice or creating relationship of client and attorney.</p>
+            <p>The Owner of this website, Advocate S.A. Pathan and the team thereof shall not be responsible for any legal consequences and the Viewer/user shall alone be responsible.</p>
+            <div class="modal-buttons">
+                <a id="declineBtn" class="btn btn-decline">Decline</a>
+                <a id="agreeBtn" class="btn">I Agree</a>
+            </div>
+        </div>
+    </div>
+
     <!-- Header -->
     <header>
         <div class="container header-container">
@@ -1064,6 +1145,22 @@
     </footer>
 
     <script>
+        // Show Disclaimer Modal on Load
+        window.addEventListener('load', function() {
+            document.getElementById('disclaimerModal').style.display = 'flex';
+        });
+
+        // Agree Button
+        document.getElementById('agreeBtn').addEventListener('click', function() {
+            document.getElementById('disclaimerModal').style.display = 'none';
+        });
+
+        // Decline Button
+        document.getElementById('declineBtn').addEventListener('click', function() {
+            window.close();
+            window.location.href = 'about:blank';
+        });
+
         // Mobile Menu Toggle
         const mobileMenuBtn = document.getElementById('mobile-menu-toggle');
         const navMenu = document.getElementById('nav-menu');
@@ -1127,6 +1224,3 @@
     </script>
 </body>
 </html>
-
-
-
